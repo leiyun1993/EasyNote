@@ -9,6 +9,7 @@ import android.widget.TextView
 import com.leiyun.easynote.App
 import com.leiyun.easynote.R
 import com.leiyun.easynote.base.BaseActivity
+import com.leiyun.easynote.base.showTips
 import com.leiyun.easynote.model.Note
 import com.leiyun.easynote.model.Note_
 import com.leiyun.easynote.utils.DateUtil
@@ -43,9 +44,14 @@ class NoteActivity : BaseActivity() {
             onBackPressed()
         }
         sureBtn.setOnClickListener {
-            addNote()
-            setResult(Activity.RESULT_OK)
-            finish()
+            val content = contentTv.text.toString()
+            if (content.isEmpty()) {
+                showTips(null, "不能保存空的备忘录")
+            } else {
+                addNote()
+                setResult(Activity.RESULT_OK)
+                finish()
+            }
         }
         tagBtn.setOnClickListener {
             sureBtn.visibility = View.VISIBLE
@@ -76,6 +82,15 @@ class NoteActivity : BaseActivity() {
                 edtNoteTitle.visibility = View.VISIBLE
                 toolbar.title = ""
                 contentTv.setOnClickListener(null)
+            }
+            if ("未标签" == (note as Note).type) {
+                tagBtn.imageResource = R.mipmap.ic_type_tag
+            } else {
+                val typeArr = resources.getStringArray(R.array.arr_note_type)
+                tagBtn.imageResource = R.mipmap.ic_note_type
+                typeArr.indices
+                        .filter { (note as Note).type == typeArr[it] }
+                        .forEach { tagBtn.setColorFilter(resources.getColor(App.instance.colorArr[it])) }
             }
         }
 

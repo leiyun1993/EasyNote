@@ -37,10 +37,8 @@ class MainActivity : BaseActivity() {
     }
 
     override fun initData() {
-
         noteBox = (application as App).boxStore.boxFor(Note::class.java)
         noteQuery = noteBox.query().build()
-
 
         val typeArr = resources.getStringArray(R.array.arr_note_type)
         for (i in typeArr.indices) {
@@ -56,6 +54,16 @@ class MainActivity : BaseActivity() {
                 drawerLayout.closeDrawer(Gravity.START, false)
             }
         }
+        val itemView = View.inflate(this, R.layout.item_note_type, null)
+        val typeIcon: ImageView = itemView.findViewById(R.id.typeIcon)
+        val typeName: TextView = itemView.findViewById(R.id.typeName)
+        typeIcon.setColorFilter(resources.getColor(R.color.white))
+        typeName.text = "全部"
+        itemView.setOnClickListener {
+            queryNotes()
+            drawerLayout.closeDrawer(Gravity.START, false)
+        }
+        leftDrawer.addView(itemView)
 
         toolbar.setNavigationIcon(R.mipmap.ic_drawer_home)
         toolbar.title = "备忘录"

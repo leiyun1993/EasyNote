@@ -80,6 +80,5 @@
         android:gravity="top|start"
         android:padding="12dp"
         android:textColor="@color/colorBlackOne"
-        android:textSize="14sp"
-        android:inputType="text" />
+        android:textSize="14sp" />
 </LinearLayout>

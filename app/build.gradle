@@ -1,0 +1,57 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+
+apply plugin: 'kotlin-kapt'
+
+apply plugin: 'io.objectbox'
+
+/*uploadArchives.enabled = false
+
+// Until the ObjectBox Gradle plugin has better support for Kotlin, we must help it a bit:
+//task('compileKotlin').dependsOn objectbox
+android.sourceSets.main.java.srcDirs += 'build/generated/source/objectbox'*/
+
+android {
+    compileSdkVersion 26
+    buildToolsVersion "26.0.0"
+    defaultConfig {
+        applicationId "com.leiyun.easynote"
+        minSdkVersion 21
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+    compile('org.jetbrains.anko:anko:0.10.0') {
+        exclude group: 'com.google.android', module: 'android'
+    }
+    compile "io.objectbox:objectbox-android:$objectBoxVersion"
+    compile "io.objectbox:objectbox-kotlin:$objectBoxVersion"
+    kapt "io.objectbox:objectbox-processor:$objectBoxVersion"
+    implementation 'com.android.support:appcompat-v7:26.0.0'
+    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+    implementation 'com.android.support:design:26.0.0'
+    implementation 'com.android.support:support-v4:26.0.0'
+    implementation 'com.jaeger.statusbarutil:library:1.4.0'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:0.5'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.0'
+}

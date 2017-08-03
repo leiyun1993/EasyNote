@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="arr_note_type">
+        <item>旅游</item>
+        <item>个人</item>
+        <item>生活</item>
+        <item>工作</item>
+        <item>未标签</item>
+    </array>
+</resources>

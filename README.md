@@ -103,3 +103,11 @@ fun queryNotes(type: String) {      //查询指定type
     mAdapter.setData(notes)
 }
 ```
+
+### EasyNote预览
+
+![image](https://github.com/leiyun1993/EasyNote/raw/master/images/01.jpg)
+![image](https://github.com/leiyun1993/EasyNote/raw/master/images/02.jpg)
+![image](https://github.com/leiyun1993/EasyNote/raw/master/images/03.jpg)
+![image](https://github.com/leiyun1993/EasyNote/raw/master/images/04.jpg)
+![image](https://github.com/leiyun1993/EasyNote/raw/master/images/05.jpg)

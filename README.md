@@ -29,14 +29,14 @@ allprojects {
         maven { url "http://objectbox.net/beta-repo/" }
     }
 }
-<pre>
+
 ---------------------------------------------------------------------------------------------------
-<pre>
+
 apply plugin: 'kotlin-kapt'
 apply plugin: 'io.objectbox'
-<pre>
+
 ---------------------------------------------------------------------------------------------------
-<pre>
+
 implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
 compile('org.jetbrains.anko:anko:0.10.0') {
     exclude group: 'com.google.android', module: 'android'
@@ -46,7 +46,7 @@ compile "io.objectbox:objectbox-kotlin:$objectBoxVersion"
 kapt "io.objectbox:objectbox-processor:$objectBoxVersion"
 <pre>
 2、配置KotlinBean--->make project
-<pre>
+
 @Entity
 data class Note(
     @Id var id: Long = 0,
@@ -54,4 +54,3 @@ data class Note(
     var content: String? = null,
     var date: Date? = null
 )
-<pre>

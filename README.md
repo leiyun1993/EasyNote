@@ -4,7 +4,7 @@
 ### Kotlin-ObjectBox的使用
 
 1、工程配置
-<pre>
+```
 buildscript {
     ext.kotlin_version = '1.1.3-2'
     ext.objectBoxVersion = "0.9.13"
@@ -29,14 +29,14 @@ allprojects {
         maven { url "http://objectbox.net/beta-repo/" }
     }
 }
-
+```
 ---------------------------------------------------------------------------------------------------
-
+```
 apply plugin: 'kotlin-kapt'
 apply plugin: 'io.objectbox'
-
+```
 ---------------------------------------------------------------------------------------------------
-
+```
 implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
 compile('org.jetbrains.anko:anko:0.10.0') {
     exclude group: 'com.google.android', module: 'android'
@@ -44,9 +44,9 @@ compile('org.jetbrains.anko:anko:0.10.0') {
 compile "io.objectbox:objectbox-android:$objectBoxVersion"
 compile "io.objectbox:objectbox-kotlin:$objectBoxVersion"
 kapt "io.objectbox:objectbox-processor:$objectBoxVersion"
-<pre>
+```
 2、配置KotlinBean--->make project
-
+```
 @Entity
 data class Note(
     @Id var id: Long = 0,
@@ -54,3 +54,4 @@ data class Note(
     var content: String? = null,
     var date: Date? = null
 )
+```

@@ -111,3 +111,11 @@ fun queryNotes(type: String) {      //查询指定type
 ![image](https://github.com/leiyun1993/EasyNote/raw/master/images/03.jpg)
 ![image](https://github.com/leiyun1993/EasyNote/raw/master/images/04.jpg)
 ![image](https://github.com/leiyun1993/EasyNote/raw/master/images/05.jpg)
+
+### 相关链接
+
+1、GreenDao老东家的[ObjectBox](https://github.com/greenrobot/ObjectBox)
+
+2、Google 2017IO大会指定Android开发语言[Kotlin](https://github.com/JetBrains/kotlin)
+
+3、Anko是一个使开发Android应用更简单更快捷的库[Anko](https://github.com/Kotlin/anko)

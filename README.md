@@ -30,12 +30,10 @@ allprojects {
     }
 }
 ```
----------------------------------------------------------------------------------------------------
 ```
 apply plugin: 'kotlin-kapt'
 apply plugin: 'io.objectbox'
 ```
----------------------------------------------------------------------------------------------------
 ```
 implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
 compile('org.jetbrains.anko:anko:0.10.0') {
@@ -54,4 +52,54 @@ data class Note(
     var content: String? = null,
     var date: Date? = null
 )
+```
+3、使用ObjectBox（基本使用）
+```
+class App : Application() {
+
+    lateinit var boxStore: BoxStore
+        private set
+
+    override fun onCreate() {
+        super.onCreate()
+        instance = this
+        boxStore = MyObjectBox.builder().androidContext(this).build()
+    }
+}
+
+private lateinit var noteBox: Box<Note>
+private lateinit var noteQuery: Query<Note>
+
+noteBox = (application as App).boxStore.boxFor(Note::class.java)
+notesQuery = noteBox.query().order(Note_.content).build()
+```
+增、改
+```
+private fun addNote() {
+    val content = contentTv.text.toString()
+    val note = Note(type = type, content = content, date = date)
+    if (noteID != -1L) {    //不传ID则ID自增，传入ID则为改
+        note.id = noteID
+    }
+    noteBox.put(note)
+}
+```
+删
+
+```
+noteBox.remove(note)
+```
+查
+
+```
+fun queryNotes() {      //查询全部
+    val notes = noteQuery.find()
+    mAdapter.setData(notes)
+}
+
+fun queryNotes(type: String) {      //查询指定type
+    val builder: QueryBuilder<Note> = noteBox.query()
+    val notes = builder.equal(Note_.type, type).build().find()
+    mAdapter.setData(notes)
+}
 ```

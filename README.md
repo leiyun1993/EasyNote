@@ -44,7 +44,7 @@ compile "io.objectbox:objectbox-kotlin:$objectBoxVersion"
 kapt "io.objectbox:objectbox-processor:$objectBoxVersion"
 ```
 2、配置KotlinBean--->make project
-```
+```kotlin
 @Entity
 data class Note(
     @Id var id: Long = 0,
@@ -54,7 +54,7 @@ data class Note(
 )
 ```
 3、使用ObjectBox（基本使用）
-```
+```kotlin
 class App : Application() {
 
     lateinit var boxStore: BoxStore
@@ -74,7 +74,7 @@ noteBox = (application as App).boxStore.boxFor(Note::class.java)
 notesQuery = noteBox.query().order(Note_.content).build()
 ```
 增、改
-```
+```kotlin
 private fun addNote() {
     val content = contentTv.text.toString()
     val note = Note(type = type, content = content, date = date)
@@ -86,12 +86,12 @@ private fun addNote() {
 ```
 删
 
-```
+```kotlin
 noteBox.remove(note)
 ```
 查
 
-```
+```kotlin
 fun queryNotes() {      //查询全部
     val notes = noteQuery.find()
     mAdapter.setData(notes)

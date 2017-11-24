@@ -119,3 +119,7 @@ fun queryNotes(type: String) {      //查询指定type
 2、Google 2017IO大会指定Android开发语言[Kotlin](https://github.com/JetBrains/kotlin)
 
 3、Anko是一个使开发Android应用更简单更快捷的库[Anko](https://github.com/Kotlin/anko)
+
+### 更新日志
+
+1、升级objectBoxVersion
